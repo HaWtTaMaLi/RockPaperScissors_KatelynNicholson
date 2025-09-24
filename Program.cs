@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace RockPaperScissors_KatelynNicholson
         // Rock = 0, Paper = 1, Scissors =2
         static string[] optionNames = { "Rock ", "Paper", "Scissors" };
 
+
         static void Main()
         {
             //make text green
@@ -22,6 +23,9 @@ namespace RockPaperScissors_KatelynNicholson
             Console.ReadKey();
             playerInput();
 
+            //compareAnswers();
+            //compareAnswers(int playerChoice, int computerChoice);
+            //I couldnt figure out how to trigger the compare answers :(
 
         }
 
@@ -58,7 +62,7 @@ namespace RockPaperScissors_KatelynNicholson
         static void compareAnswers(int playerChoice, int computerChoice)
         {
             int attempts = 0;
-             while(attempts < 3)
+            while (attempts < 3)
             {
                 playerChoice = Convert.ToInt32(Console.ReadLine()) - 1;
 
@@ -75,6 +79,23 @@ namespace RockPaperScissors_KatelynNicholson
                 {
                     Console.WriteLine("Player Wins!");
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("Computer Wins!");
+                }
+
+                attempts++;
+
+                if(attempts == 3)
+                {
+                    Console.WriteLine("No more attempts!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Attempts left: " + (3 - attempts));
+                    Console.WriteLine();
                 }
             }
         }
