@@ -10,7 +10,6 @@ namespace RockPaperScissors_KatelynNicholson
     {
         // Rock = 0, Paper = 1, Scissors =2
         static string[] optionNames = { "Rock ", "Paper", "Scissors" };
-        static int[] attempts = new int [3];
 
         static void Main()
         {
@@ -20,6 +19,9 @@ namespace RockPaperScissors_KatelynNicholson
             Console.Clear();
 
             computerGen();
+            Console.ReadKey();
+            playerInput();
+
 
         }
 
@@ -36,19 +38,45 @@ namespace RockPaperScissors_KatelynNicholson
             Console.ReadKey();
 
             string option = optionNames[computerChoice];
-            Console.WriteLine("Computer Chose: " + option);
+            Console.WriteLine("Computer Chose");
 
         }
 
-
-        static void isHigher()
+        static void playerInput()
         {
-           
+            Console.WriteLine("Choose your option:");
+            Console.WriteLine("1 = Rock, 2 = Paper, 3 = Scissors");
+
+            int choice = Convert.ToInt32(Console.ReadLine());
+            int playerChoice = choice - 1;
+
+            string option = optionNames[playerChoice];
+            Console.WriteLine("You Chose: " + option);
+
         }
 
-        static void isLower()
+        static void compareAnswers(int playerChoice, int computerChoice)
         {
-            // is rock lower then paper?
+            int attempts = 0;
+             while(attempts < 3)
+            {
+                playerChoice = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                Console.WriteLine("Player chose: " + optionNames[playerChoice]);
+                Console.WriteLine("Computer chose: " + optionNames[computerChoice]);
+
+                if (playerChoice == computerChoice)
+                {
+                    Console.WriteLine("It's a tie!");
+                }
+                else if ((playerChoice == 0 && computerChoice == 2) ||
+                 (playerChoice == 1 && computerChoice == 0) ||
+                 (playerChoice == 2 && computerChoice == 1))
+                {
+                    Console.WriteLine("Player Wins!");
+                    break;
+                }
+            }
         }
     }
 }
